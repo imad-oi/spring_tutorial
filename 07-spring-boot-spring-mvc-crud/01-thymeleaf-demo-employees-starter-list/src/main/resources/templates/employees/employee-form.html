@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form for Add</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body class="m-4 p-2">
+<div class="container">
+    <a th:href="@{/employees/list}" class="btn btn-secondary btn-sm mb-2 ">Back</a>
+    <h3> Employee Directory </h3>
+    <hr>
+    <div class="card w-75">
+        <div class="card-header">
+            <h4> Save Employee </h4>
+        </div>
+        <form
+                class="form-group mt-1 "
+                action="#"
+                th:action="@{/employees/save}"
+                th:object="${employee}"
+                method="post"
+        >
+            <div class="card-body">
+                <input type="hidden" th:field="*{id}">
+                <input class="form-control mb-4 w-50" required placeholder="First Name" th:field="*{firstName}">
+                <input class="form-control mb-4 w-50" required placeholder="Last Name" th:field="*{lastName}">
+                <input class="form-control mb-4 w-50" required placeholder="Email" th:field="*{email}">
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-success btn-sm " type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
