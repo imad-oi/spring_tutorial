@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<h2>
+    Imad Company Home Page
+</h2>
+<hr>
+Welcome to the Imad company home page!
+
+<hr>
+
+<p>
+    User: <span sec:authentication="principal.username"></span>
+    <br>
+    Role(s): <span sec:authentication="principal.authorities"></span>
+</p>
+
+<hr>
+<div sec:authorize="hasRole('MANAGER')">
+    <p>
+        <a th:href="@{/leaders}"> LeaderShip Meeting </a> (Only for manager peeps)
+    </p>
+</div>
+<div sec:authorize="hasRole('ADMIN')">
+    <p>
+        <a th:href="@{/systems}"> Systems Meeting </a> (Only for ADMIN peeps)
+    </p>
+</div>
+
+<form action="#" th:action="@{/logout}" method="post">
+    <input type="submit" value="logout">
+</form>
+</body>
+</html>
